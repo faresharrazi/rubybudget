@@ -30,8 +30,9 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "OutcomeDetails",
   data() {
     return {
       name: "",
@@ -42,14 +43,17 @@ export default {
     };
   },
   methods: {
-    addOutcome() {
-      const newOutcome = {
-        id: Date.now(),
-        name: this.name,
-        amount: this.amount,
-        type: this.type,
-      };
-      this.outcomes.push(newOutcome);
+    async addOutcome() {
+      try {
+        const response = await axios.post("http://localhost:4567/outcome", {
+          name: this.name,
+          amount: this.amount,
+          type: this.type,
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
       // Reset form
       this.name = "";
       this.amount = 0;
