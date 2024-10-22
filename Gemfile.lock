@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    sinatra-cors (1.2.0)
+
+PLATFORMS
+  arm64-darwin-23
+  ruby
+
+DEPENDENCIES
+  sinatra-cors
+
+BUNDLED WITH
+   2.5.17

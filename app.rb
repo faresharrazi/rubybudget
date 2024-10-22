@@ -51,3 +51,12 @@ post '/distribute_income' do
   content_type :json
   { status: "Income distributed successfully" }.to_json
 end
+
+options "*" do
+  response.headers["Allow"] = "GET, POST, OPTIONS"
+  response.headers["Access-Control-Allow-Origin"] = "http://localhost:8080"
+  response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+  response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+  200
+end
+
