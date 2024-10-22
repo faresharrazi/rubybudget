@@ -1,10 +1,14 @@
 require 'sinatra'
 require 'json'
 require 'sinatra/cors'
+require 'sinatra/activerecord'
 require_relative 'income'
 require_relative 'outcome'
 require_relative 'account'
 require_relative 'budget_manager'
+
+# Set up SQLite database for development
+set :database, { adapter: "sqlite3", database: "db/budget_app.db" }
 
 # Enable CORS
 set :allow_origin, "http://localhost:8080"

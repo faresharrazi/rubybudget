@@ -1,4 +1,5 @@
-class Account
+class Account < ActiveRecord::Base
+  has_many :transactions
   attr_accessor :id, :name, :amount, :type, :transactions, :fraction
 
   @@next_id = 1  # Class variable to auto-increment IDs

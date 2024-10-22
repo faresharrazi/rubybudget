@@ -1,4 +1,4 @@
-class Income
+class Income < ActiveRecord::Base
   attr_accessor :id, :name, :amount, :type
 
   @@next_id = 1  # Class variable to auto-increment IDs
