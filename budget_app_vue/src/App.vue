@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <Income />
-    <Outcome />
-    <Account />
+    <IncomeSource />
+    <OutcomeDetails />
+    <AccountDetails />
   </div>
 </template>
 
 <script>
-import Income from "./components/Income.vue";
-import Outcome from "./components/Outcome.vue";
-import Account from "./components/Account.vue";
+import IncomeSource from "./components/IncomeSource.vue";
+import OutcomeDetails from "./components/OutcomeDetails.vue";
+import AccountDetails from "./components/AccountDetails.vue";
 
 export default {
   components: {
-    Income,
-    Outcome,
-    Account,
+    IncomeSource,
+    OutcomeDetails,
+    AccountDetails,
   },
 };
 </script>
