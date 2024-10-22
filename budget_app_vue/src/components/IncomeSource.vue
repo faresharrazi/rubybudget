@@ -30,8 +30,9 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "IncomeSource",
   data() {
     return {
       name: "",
@@ -42,14 +43,17 @@ export default {
     };
   },
   methods: {
-    addIncome() {
-      const newIncome = {
-        id: Date.now(),
-        name: this.name,
-        amount: this.amount,
-        type: this.type,
-      };
-      this.incomes.push(newIncome);
+    async addIncome() {
+      try {
+        const response = await axios.post("http://localhost:4567/income", {
+          name: this.name,
+          amount: this.amount,
+          type: this.type,
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
       // Reset form
       this.name = "";
       this.amount = 0;
