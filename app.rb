@@ -1,9 +1,15 @@
 require 'sinatra'
 require 'json'
+require 'sinatra/cors'
 require_relative 'income'
 require_relative 'outcome'
 require_relative 'account'
 require_relative 'budget_manager'
+
+# Enable CORS
+set :allow_origin, "http://localhost:8080"
+set :allow_methods, "GET,POST,OPTIONS"
+set :allow_headers, "content-type,if-modified-since"
 
 # Initialize the budget manager
 manager = BudgetManager.new
