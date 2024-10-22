@@ -20,12 +20,29 @@ manager = BudgetManager.new
 
 # Route to add income
 post '/income' do
+  # Parse the incoming JSON data
   data = JSON.parse(request.body.read)
-  income = Income.new(data["name"], data["amount"], data["type"])
-  manager.add_income(income)
-  content_type :json
-  { status: "Income added successfully" }.to_json
+
+  # Create a new Income record with a hash of attributes
+  income = Income.new(
+    name: data["name"],
+    amount: data["amount"],
+    income_type: data["income_type"] # Avoid using "type" since it's a reserved word in ActiveRecord
+  )
+
+  # Save the income record to the database
+  if income.save
+    # Return success message as JSON
+    content_type :json
+    { status: "Income added successfully", income: income }.to_json
+  else
+    # Return error message if saving fails
+    content_type :json
+    status 422
+    { error: "Failed to add income", messages: income.errors.full_messages }.to_json
+  end
 end
+
 
 # Route to add outcome
 post '/outcome' do
